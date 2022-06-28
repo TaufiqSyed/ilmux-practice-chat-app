@@ -1,15 +1,17 @@
+import { Optional } from 'sequelize/types'
+
 export type UserCreationAttributes = {
   email: string
   password: string
 }
 
 export type UserAttributes = {
-  id?: string
+  id?: number
   email: string
   password: string
 }
 
 export type UserPayload = {
-  id?: string
+  id?: number
   email: string
 }

@@ -1,6 +1,6 @@
 declare namespace Express {
   export interface Request {
-    accessToken?: string
+    authToken?: string
     userId?: number
     userEmail?: string
   }

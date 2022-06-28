@@ -4,10 +4,6 @@ import express from 'express'
 import cors from 'cors'
 import dotenv from 'dotenv'
 import sequelize from './sequelize'
-import cookieParser from 'cookie-parser'
-import * as socketio from 'socket.io'
-import WebSockets from './utils/WebSockets.js'
-
 dotenv.config()
 
 const app = express()
@@ -18,7 +14,7 @@ app.set('port', port)
 
 app.use(cors())
 app.use(express.json())
-app.use(cookieParser())
+app.use(express.urlencoded({ extended: false }))
 
 app.use('/api/v1', apiRouter)
 
@@ -32,11 +28,6 @@ app.use('*', (req, res) => {
 
 /** Create HTTP server. */
 const server = http.createServer(app)
-
-/** Create socket connection */
-global.io = new socketio.Server(server)
-global.io.on('connection', WebSockets.connection)
-
 /** Listen on provided port, on all network interfaces. */
 server.listen(port)
 /** Event listener for HTTP server "listening" event. */
