@@ -3,17 +3,19 @@ import {
   Column,
   Model,
   AllowNull,
-  AutoIncrement,
   PrimaryKey,
+  IsUUID,
+  Default,
 } from 'sequelize-typescript'
+import { DataTypes, UUIDV4 } from 'sequelize'
 import { UserAttributes } from '../../types'
 
 @Table
 export class User extends Model implements UserAttributes {
-  @AutoIncrement
+  @IsUUID(4)
   @PrimaryKey
-  @Column
-  id?: number
+  @Column({ defaultValue: DataTypes.UUIDV4 })
+  id?: string
 
   @AllowNull(false)
   @Column

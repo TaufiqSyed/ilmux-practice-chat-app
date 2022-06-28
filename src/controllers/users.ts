@@ -38,6 +38,11 @@ exports.createUser = async (
       ...req.body,
       password: await bcrypt.hash(req.body.password, 10),
     }
+    const userExists: boolean =
+      (await User.findOne({ where: { email: user.email } })) != null
+    if (userExists) {
+      return res.status(400).send('Account with this email already exists')
+    }
     console.log(user)
     const newUser = await User.create(user)
     res.status(201).send('Created user with id ' + newUser.id)
@@ -52,7 +57,7 @@ exports.getUserById = async (
   next: NextFunction
 ) => {
   try {
-    const id: number = parseInt(req.params.id)
+    const id = req.params.id
     const user = await User.findByPk(id)
     if (user == null) {
       res.status(400).send('No user exists with the provided id')

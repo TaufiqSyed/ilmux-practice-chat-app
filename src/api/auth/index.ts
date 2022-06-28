@@ -6,7 +6,7 @@ const router = Router()
 router.post('/', encode, (req, res, next) => {
   return res.status(200).json({
     success: true,
-    authorization: req.authToken,
+    authorization: req.accessToken,
   })
 })
 

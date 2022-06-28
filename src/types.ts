@@ -6,12 +6,12 @@ export type UserCreationAttributes = {
 }
 
 export type UserAttributes = {
-  id?: number
+  id?: string
   email: string
   password: string
 }
 
 export type UserPayload = {
-  id?: number
+  id?: string
   email: string
 }
