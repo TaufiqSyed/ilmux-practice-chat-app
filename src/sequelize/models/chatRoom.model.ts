@@ -6,10 +6,10 @@ import {
   IsUUID,
   PrimaryKey,
 } from 'sequelize-typescript'
-import { UserAttributes } from '../../types'
+import { ChatRoomAttributes } from '../../types'
 
 @Table
-export class User extends Model implements UserAttributes {
+export class ChatRoom extends Model implements ChatRoomAttributes {
   @IsUUID(4)
   @PrimaryKey
   @Column

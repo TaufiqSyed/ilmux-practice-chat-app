@@ -103,7 +103,7 @@
   "include": [
     "src/**/*",
     "custom.d.ts"
-  ],
+, "globals.d.ts"  ],
   "exclude": [
       "node_modules",
       "**/*.spec.ts"
